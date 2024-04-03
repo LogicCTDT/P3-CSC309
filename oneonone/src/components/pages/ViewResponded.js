@@ -49,6 +49,7 @@ export default function ViewResponded(){
         ////////////////////////////////////
         // assumes one hour slots, pass in element to check if true and multiply num slots by 2 if 30 min slots
         ////////////////////////////////////
+        
         let start_time = calendar.start_time;
         let start_hour = parseInt(start_time.split(":")[0], 10);
         let end_time = calendar.end_time;
