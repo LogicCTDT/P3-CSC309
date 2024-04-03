@@ -1,10 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
-import SuggestedMeetings from './components/SuggestedMeetings';
+import Router from './components/routes'
 
 function App() {
   return (
-    <SuggestedMeetings calendarID={5} />
+    <div className="App">
+      <Router />
+    </div>
   );
 }
 
