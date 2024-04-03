@@ -1,38 +1,48 @@
-.App {
-  text-align: center;
+:root{
+    --black: #000000;
+    --white: #FFFFFF;
+    --primary: #0177b6;
+    --primary-light: #b9dff3;
+    --primary-dark: #105071; 
+    --accent-red: #dd5040;
+    --accent-orange: #e68624 ;
+    --tertiary: #adaeb3;
+    --tertiary-light: #f0f1f7;
+    --tertiary-dark: #68696b;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.display-calendar {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid var(--black);
+    margin: 2% 5% ;
+    width: fit-content;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.time-column h2 {
+    border: 1px solid var(--black);
+    margin: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.blank, .low, .high {
+    border: 1px solid var(--black);
 }
 
-.App-link {
-  color: #61dafb;
+.blank {
+    background-color: var(--white);
+    color: var(--black);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.low {
+    background-color: var(--tertiary);
+    color: var(--white);
+}
+
+.high {
+    background-color: var(--accent-red);
+    color: var(--white);
+}
+
+.displayCalendarCol {
+    border: 1px solid black;
 }
