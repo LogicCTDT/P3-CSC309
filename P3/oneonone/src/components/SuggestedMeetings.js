@@ -2,7 +2,6 @@
 
 import  { useEffect, useState, useRef, createRef } from 'react';
 import axios from 'axios';
-import './suggestedmeetings.css';
 import SuggestedMeetingCalendar from './SuggestedMeetingCalendar';
 
 // API CALL TO GET SUGGESTED MEETINGS FOR A CALENDAR, return the meetings in a page. 
@@ -36,7 +35,7 @@ function SuggestedMeetings(props) {
     const meetingContainerRef = useRef();
     const swapRef = useRef();
     //scrolling function
-    
+    require('./suggestedmeetings.css');
     const updateSwapRef = (displayArr, responseArr, indexArr, user, indexOne, indexTwo) => {
       setIndexArr(indexArr);
       setIndexOne(indexOne);
@@ -78,6 +77,12 @@ function SuggestedMeetings(props) {
         containerRef.current.scrollLeft = newScrollPosition
     };
 
+
+
+
+    /////////////////////////////////////////////
+    // ROUTING TO MEETINGS
+    /////////////////////////////////////////////
     const finalize = () => {
       // finalize curr meeting, using the displayArr 
       
@@ -120,7 +125,7 @@ function SuggestedMeetings(props) {
     
       // wait
       
-    // go to meetings page. 
+      // go to meetings page. 
 
       // route to meeting page
 
@@ -130,8 +135,9 @@ function SuggestedMeetings(props) {
   useEffect(() => {
     setLoading(true);
     setLoadingA(true);
-
+    ///////////////////////////////////////////////////
     // TODO: api call, change 5 to calendar number
+    ///////////////////////////////////////////////////
     axios.get('http://127.0.0.1:8000/api/5/suggestedmeetings/', {
       //'http://127.0.0.1:8000/api/' + props.calendarID + '/suggestedmeetings/'
         headers: {
@@ -166,6 +172,9 @@ function SuggestedMeetings(props) {
           }
   
         }, []);
+        ///////////////////////////////////////////////////
+        //////////////// CHANGE API NUMBER
+        ///////////////////////////////////////////////////
         axios.get('http://localhost:8000/api/calendar/5/')
             .then(response => {
               console.log(response.data);
