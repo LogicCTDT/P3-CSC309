@@ -1,8 +1,9 @@
 import {useRoutes} from "react-router-dom";
 import LandingPage from "../pages/LandingPage";
 import ViewResponded from "../pages/ViewResponded";
-
-
+import SuggestedMeetings from "../SuggestedMeetings";
+import Meetings from "../Meetings.js";
+import Contacts from "../contacts.js";
 
 export default function Router (){
     return useRoutes([
@@ -16,6 +17,18 @@ export default function Router (){
                 {
                     path: '/register', 
                     element: <ViewResponded />
+                },
+                {
+                    path: '/testPage',
+                    element: <SuggestedMeetings />
+                },
+                {
+                    path: '/meetings',
+                    element: <Meetings />
+                },
+                {
+                    path: '/contacts',
+                    element: <Contacts/>
                 }
             ]
         },

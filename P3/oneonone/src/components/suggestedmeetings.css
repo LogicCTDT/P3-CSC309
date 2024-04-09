@@ -1,7 +1,15 @@
 
-
+.big-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eeeeee;
+    padding-left: 2rem;
+}
 .container {
-    width:100vw;
+    width:85vw;
     height:100vh;
     display:flex;
     flex-direction: column;
@@ -10,11 +18,15 @@
     background-color: #eeeeee;
 }
 
+.swaps {
+    width: 15vw;
+}
+
 .container-ref::-webkit-scrollbar {
     display: none;
 }
 .meetings-container {
-    width: 450vw;
+    width: 425vw;
     height: 80vh;
     display: flex;
     align-items: center;
@@ -22,7 +34,7 @@
 }
 
 .meeting {
-    width: 90vw;
+    width: 85vw;
     height: 80vh;
     display: flex;
     align-items: center;

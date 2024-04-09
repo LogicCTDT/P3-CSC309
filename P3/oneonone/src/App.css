@@ -16,18 +16,32 @@
     flex-direction: row;
     border: 1px solid var(--black);
     margin: 2% 5% ;
-    width: fit-content;
+    width: 95vw;
 }
-
+.time-column > div.blank {
+    padding: 6px;
+}
 .time-column h2 {
     border: 1px solid var(--black);
     margin: 0;
+    padding: 6px;
 }
 
+.time-column > div.blank.clickable {
+    cursor: pointer;
+    
+}
+.time-column > div.blank.clickable:hover {
+    cursor: pointer;
+    background-color: var(--primary-light);
+}
 .blank, .low, .high {
     border: 1px solid var(--black);
 }
 
+div {
+    padding: 0px;
+}
 .blank {
     background-color: var(--white);
     color: var(--black);
