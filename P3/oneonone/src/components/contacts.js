@@ -66,6 +66,10 @@ const Contacts = () => {
         </header>
         <div class="mainContainer" id="mainContainer"> 
             <div class="addContainer">
+                {///////////////////////////////////////////////////////////////////////////////////////////////
+                // CHANGE HIDDEN VALUE FROM 10 TO USER ID
+                ////////////////////////////////////////////////////////////////////////////////////////////////}
+                }
                 <form action="http://127.0.0.1:8000/api/10/contacts/" method="post"> 
                     <label for="email" > Email: </label>
                     <input type="email" name="email"/>
