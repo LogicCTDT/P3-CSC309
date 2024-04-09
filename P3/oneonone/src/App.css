@@ -22,12 +22,13 @@
 
 .time-column h4 {
     border: 1px solid var(--black);
-    margin: 0;
-    min-width: 120px;
-    width: fit-content;
+    margin: 2% 5% ;
+    width: 95vw;
 }
-
-.blank, .low, .high, .other-sep, .shared {
+.time-column > div.blank {
+    padding: 6px;
+}
+.time-column h2 {
     border: 1px solid var(--black);
     font-size: large;
     height: 2rem;
@@ -41,27 +42,25 @@
     border-radius: 0;
     padding: 0;
     margin: 0;
-    font-size: large;
-    min-width: 120px;
-    height: 100%;
+    padding: 6px;
 }
 
-.blankbutton:hover {
-    background-color: var(--tertiary-light);
+.time-column > div.blank.clickable {
     cursor: pointer;
+    
 }
-
-.lowbutton:hover {
-    background-color: var(--tertiary-dark);
+.time-column > div.blank.clickable:hover {
     cursor: pointer;
+    background-color: var(--primary-light);
+}
+.blank, .low, .high {
+    border: 1px solid var(--black);
 }
 
-.highbutton:hover {
-    background-color: var(--accent-orange);
-    cursor: pointer;
+div {
+    padding: 0px;
 }
-
-.blank, .blankbutton {
+.blank {
     background-color: var(--white);
     color: var(--black);
 }
