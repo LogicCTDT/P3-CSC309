@@ -1,6 +1,7 @@
 import {useRoutes} from "react-router-dom";
 import LandingPage from "../pages/LandingPage";
 import ViewResponded from "../pages/ViewResponded";
+import FillInCalendar from "../pages/FillInCalendar";
 
 
 export default function Router (){
@@ -13,8 +14,12 @@ export default function Router (){
                     element: <LandingPage />
                 },
                 {
-                    path: '/register', 
+                    path: '/ViewResponded', 
                     element: <ViewResponded />
+                },
+                {
+                    path: '/FillInCalendar', 
+                    element: <FillInCalendar />
                 }
             ]
         },

@@ -14,35 +14,86 @@
 .display-calendar {
     display: flex;
     flex-direction: row;
+    margin: 2% 2% ;
+    min-width: 300px;
+    width: 48%;
+    
+}
+
+.time-column h4 {
     border: 1px solid var(--black);
-    margin: 2% 5% ;
+    margin: 0;
+    min-width: 120px;
     width: fit-content;
 }
 
-.time-column h2 {
+.blank, .low, .high, .other-sep, .shared {
     border: 1px solid var(--black);
+    font-size: large;
+    height: 2rem;
+    text-align: center;
+    min-width: 120px;
+}
+
+.blankbutton, .lowbutton, .highbutton {
+    text-align: center;
+    border: none;
+    border-radius: 0;
+    padding: 0;
     margin: 0;
+    font-size: large;
+    min-width: 120px;
+    height: 100%;
 }
 
-.blank, .low, .high {
-    border: 1px solid var(--black);
+.blankbutton:hover {
+    background-color: var(--tertiary-light);
+    cursor: pointer;
 }
 
-.blank {
+.lowbutton:hover {
+    background-color: var(--tertiary-dark);
+    cursor: pointer;
+}
+
+.highbutton:hover {
+    background-color: var(--accent-orange);
+    cursor: pointer;
+}
+
+.blank, .blankbutton {
     background-color: var(--white);
     color: var(--black);
 }
 
-.low {
+.low, .lowbutton {
     background-color: var(--tertiary);
     color: var(--white);
 }
 
-.high {
+.high, .highbutton {
     background-color: var(--accent-red);
     color: var(--white);
 }
 
-.displayCalendarCol {
-    border: 1px solid black;
+.other-sep {
+    background-color: var(--primary-light);
+    color: var(--primary-light);
+}
+
+.shared {
+    background-color: var(--primary);
+    color: var(--primary);
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    border: 1px solid var(--black);
+    border-radius: 10px;
+    padding: 0;
+    margin: 10px;
 }
