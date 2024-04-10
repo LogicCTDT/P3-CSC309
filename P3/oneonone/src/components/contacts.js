@@ -44,9 +44,9 @@ const Contacts = () => {
                         &#9776;
                     </button>
                     <nav class="hidden md:block space-x-8 text-xl" aria-label="main">
-                        <a href="meetings_page.html" class="hover:opacity-80">Meetings</a>
+                        <a href="/meetings" class="hover:opacity-80">Meetings</a>
                         <a href="create-meeting.html" class="hover:opacity-80">Schedule Meetings</a>
-                        <a href="contacts.html" class="hover:opacity-80">Contacts</a>
+                        <a href="/contacts" class="hover:opacity-80">Contacts</a>
                         <a href="profile.html" class="hover:opacity-80">Profile</a>
                     </nav>
                 </div>
@@ -84,9 +84,9 @@ const Contacts = () => {
                     <div key={index} class="contactBox"> 
                     <img src="Clouds.png" height="80px" width="80px"/> 
                     <div class="textBox">
-                    <h4> {contact.contact_id} </h4>
+                    <h4> {contact.contact_username} </h4>
                     <p> {contact.contact_email} </p>
-                    <p> {contact.id} </p>
+                    <p> {contact.contact_id} </p>
                     </div>
                 </div>
                 ))} 
