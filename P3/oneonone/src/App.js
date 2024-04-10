@@ -1,6 +1,5 @@
-// import React, { useState } from 'react';
-// import './App.css';
-//import { Router } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom';
+import './App.css';
 import Router from './components/routes'
 // import { ToastContainer, toast } from "react-toastify";
 // import axios from "axios";
@@ -8,7 +7,9 @@ import Router from './components/routes'
 function App() {
   return (
     <div className="App">
+      
       <Router />
+      
     </div>
   )
 }

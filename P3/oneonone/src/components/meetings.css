@@ -1,0 +1,205 @@
+body, html {
+    width:100%;
+}
+div.meetingContainer {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    align-items: center;
+    justify-items: center;
+    
+    margin-top: 64px;
+}
+h1.meetingTitle {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+h2.meetingName {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+div.meetingBox {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #b9dff3;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    text-align: center;
+
+
+
+    border-width:2px;
+    border-style:solid;
+    border-bottom-color:#aaa;
+    border-right-color:#aaa;
+    border-top-color:#ddd;
+    border-left-color:#ddd;
+    border-radius:3px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+}
+div#scheduled {
+    background-color: #eaf3f8;
+    border-width: 1px;
+}
+
+div#scheduled:hover {
+    background-color: #d2e7f1
+    ;
+}
+div#invited {
+     
+      border-color: #e68624;
+      border-width: 2px;
+}
+div.meetingBox:hover {
+    background-color: #a3d5ef
+    ; 
+}
+div#invited:hover {
+    background-color:
+    #a3d5ef;
+
+      
+}
+div.meetingInformation {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+h6.meetingPartner {
+    margin: 0;
+    text-align: center;
+}
+p.meetingTime {
+    margin: 0;
+}
+button.meetingButton {
+    padding: 0.8rem;
+    background-color: #0177b6;
+    border-width: 1px;
+    border-radius: 5px;
+    margin-bottom: 32px;
+}
+button.meetingButton:hover {
+    background-color: #005f91;
+    
+}
+
+.meetingContainer.hidden {
+    display: none;
+  }
+
+h2 {
+    font-weight:300px ;
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+@media screen and (max-width: 600px) {
+    div.meetingContainer {
+        width: 90%;
+    }
+    
+}
+@media screen and (max-width: 315px) {
+    div.meetingContainer {
+        width: 100%;
+        margin-right: 6px;
+        margin-left: 6px;
+    }
+    
+}
+
+
+div.container {
+    width: 100%;
+    height: 20vh;
+}
+.hamburger{
+    position: fixed;
+    display: block;
+    width: 0.1vw;
+    cursor: pointer;
+
+    appearance: none;
+    background: none;
+    outline: none;
+    border: none;
+
+    margin-top: 4vh;
+    margin-left: 4vh;
+
+    z-index: 99;
+
+}
+
+.hamburger .bar, .hamburger:after, .hamburger:before {
+    content: '';
+    display: block;
+    width:100%;
+    height: 0.5vh;
+    width: 11vw;
+    background-color: white;
+    margin-top: 1.2vh;
+    transition: 0.4s;
+}
+
+.hamburger.is-active:before{
+    transform: translateY(1vh) rotateZ(45deg)
+}
+
+.hamburger.is-active:after{
+    transform: translateY(-2.3vh) rotateZ(-45deg)
+}
+
+.hamburger.is-active .bar {
+    opacity: 0;
+}
+
+.mobile-nav{
+    position:fixed;
+    top: 0;
+    right: 200%;
+    width: 100%;
+    min-height: 100vh;
+    display:block;
+    z-index: 98;
+    background-color: grey;
+    padding-top: 25vh;
+    transition: 0.4s;
+    opacity: 0.9;
+}
+
+.mobile-nav.is-active{
+    right: 0;
+}
+
+.mobile-nav a {
+    display: block;
+    width: 100%;
+    max-width: 70vw;
+    margin: 0 auto 3.3vh;
+    text-align: center;
+    padding: 2.2vh 2.2vw;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+}

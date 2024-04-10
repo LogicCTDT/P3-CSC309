@@ -1,0 +1,133 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+:root{
+  --black: #000000;
+  --white: #FFFFFF;
+  --primary: #0177b6;
+  --primary-light: #b9dff3;
+  --primary-dark: #105071; 
+  --accent-red: #dd5040;
+  --accent-orange: #e68624 ;
+  --tertiary: #adaeb3;
+  --tertiary-light: #f0f1f7;
+  --tertiary-dark: #68696b;
+}
+
+.display-calendar {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid var(--black);
+  margin: 2% 5% ;
+  width: 95vw;
+}
+.time-column > div.blank {
+  padding: 6px;
+}
+.time-column h2 {
+  border: 1px solid var(--black);
+  margin: 0;
+  padding: 6px;
+}
+
+.time-column > div.blank.clickable {
+  cursor: pointer;
+  
+}
+.time-column > div.blank.clickable:hover {
+  cursor: pointer;
+  background-color: var(--primary-light);
+}
+.blank, .low, .high {
+  border: 1px solid var(--black);
+}
+
+div {
+  padding: 0px;
+}
+.blank {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.low {
+  background-color: var(--tertiary);
+  color: var(--white);
+}
+
+.high {
+  background-color: var(--accent-red);
+  color: var(--white);
+}
+
+.displayCalendarCol {
+  border: 1px solid black;
+}
+body{
+  margin-top:20px;
+  background:#f5f5f5;
+}
+.panel {
+box-shadow: none;
+}
+.panel-heading {
+border-bottom: 0;
+}
+.panel-title {
+font-size: 17px;
+}
+.panel-title > small {
+font-size: .75em;
+color: #999999;
+}
+.panel-body *:first-child {
+margin-top: 0;
+}
+.panel-footer {
+border-top: 0;
+}
+
+.panel-default > .panel-heading {
+  color: #333333;
+  background-color: transparent;
+  border-color: rgba(0, 0, 0, 0.07);
+}
+
+form label {
+  color: #999999;
+  font-weight: 400;
+}
+
+.form-horizontal .form-group {
+margin-left: -15px;
+margin-right: -15px;
+}
+@media (min-width: 768px) {
+.form-horizontal .control-label {
+  text-align: right;
+  margin-bottom: 0;
+  padding-top: 7px;
+}
+}
+
+.profile__contact-info-icon {
+  float: left;
+  font-size: 18px;
+  color: #999999;
+}
+.profile__contact-info-body {
+  overflow: hidden;
+  padding-left: 20px;
+  color: #999999;
+}
+.profile-avatar {
+width: 200px;
+position: relative;
+margin: 0px auto;
+margin-top: 196px;
+border: 4px solid #f3f3f3;
+}

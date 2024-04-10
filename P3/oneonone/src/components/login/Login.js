@@ -137,18 +137,21 @@ async function LoginUser(credentials) {
 }
 
 const Login = ({setToken}) => {
+    
     const [userName, setUserName] = useState();
     const [password, setPassword] = useState();
     const navigate = useNavigate();
     const handleSubmit = async(e) => {
-        e.preventDefault()
+        navigate('/');
+    e.preventDefault()
         const token = await LoginUser({
             userName,
             password
         });
         setToken(token);
-        navigate('/meetings');
+        
     }
+  require('./login.css');
   return (
     <div class="login">
 			<form onSubmit={handleSubmit}>
@@ -159,9 +162,7 @@ const Login = ({setToken}) => {
 				<input type="password" id="password" name="password" required/>
 				<button type="submit">Login</button>
 				<div class="additional-links">
-					<a href="forgot_password.html">Forgot Your Password?</a>
-					<span> | </span>
-					<a href="create_account.html">Create New Account</a>
+					<a href="signup">Do not have an account? Go to Signup!</a>
 				</div>
 			</form>
 		</div>

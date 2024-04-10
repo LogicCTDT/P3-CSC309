@@ -1,0 +1,210 @@
+
+
+div.mainContainer {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+}
+html, body {
+    height: 100%;
+    margin: 0px;
+}
+div.addContainer {
+    flex-grow: 1;
+    max-width: 30%;
+    background-color:  #f0f1f7;
+}
+div.contactsContainer {
+    background-color: #ffffff;
+    flex-grow: 1;
+    max-width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.textBox > h4 {
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+.mainContainer.hidden {
+    display: none;
+}
+h2.contactsName {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+form > * {
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+form {
+    margin-top: 128px;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+div.contactBox {
+    background-color:  #b9dff3;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    align-items: center;
+    justify-content: start;
+    margin-bottom: 1rem;
+    border-width:1px;
+    border-style:solid;
+    border-bottom-color:#333;
+    border-right-color:#222;
+    border-top-color:#111;
+    border-left-color:#000;
+    border-radius:3px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+
+}
+
+.add {
+    background-color: #0177b6;
+}
+.added {
+    background-color: #dd5040;
+}
+.add, .added {
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    font-weight: bolder;
+    min-height: 3rem;
+    min-width: 3rem;
+    width: 20%;
+    margin: 2rem 4px 2rem 0;
+}
+.submit-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+.primary {
+    background-color: #0177b6;
+    color: #ffffff;
+    font-weight: bold;
+    width: 100%;
+    height: 3rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+}
+
+
+img {
+    border-radius: 100px;
+    margin: 1rem;
+}
+div.textBox > * {
+    margin-left: 0.25rem;
+    margin-right: 1rem;
+    margin-top: 0.25rem; 
+    justify-content: center;
+}
+div.textBox > p {
+    font-style: italic;
+    font-size: 12px;
+    margin-top: 0.125rem;
+}
+div.textBox {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+
+}
+div.contactBox:hover {
+    background-color:  #a3d5ef;
+}
+input {
+    padding: 0.8rem;
+
+}
+
+input.submit {
+    padding: 0.8rem;
+    background-color: #b9dff3;
+    border-width: 1px;
+    border-radius: 5px;
+    margin-bottom: 32px;
+    cursor: pointer;
+}
+input.submit:hover {
+    background-color: #a3d5ef;
+}
+
+@media screen and (max-width: 1200px) {
+    div.contactBox {
+        width: 50%;
+    }
+}
+@media screen and (max-width: 800px) {
+    div.contactBox {
+        width: 60%;
+    }
+}
+@media screen and (max-width: 600px) {
+    div.contactBox {
+        width: 70%;
+    }
+    div.addContainer {
+        max-width: 40%;
+    }
+    div.contactsContainer {
+        max-width: 60%;
+    }
+    img {
+        height: 50px;
+        width: 50px;
+    }
+    div.textBox > h4 {
+        margin-top: 0.5rem;
+        margin-bottom: 0.25rem;
+    }
+}
+
+@media screen and (max-width: 465px) {
+    div.contactBox {
+        width: 70%;
+    }
+    div.addContainer {
+        max-width: 100%;
+        max-height: 30%;
+    }
+    form {
+        margin-top: 1rem;
+    }
+    div.contactsContainer {
+        max-width: 100%;
+    }
+    img {
+        height: 50px;
+        width: 50px;
+    }
+    div.textBox > h4 {
+        margin-top: 0.5rem;
+        margin-bottom: 0.25rem;
+    }
+    div.mainContainer {
+        flex-direction: column;
+    }
+}
