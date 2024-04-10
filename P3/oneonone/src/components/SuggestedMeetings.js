@@ -3,7 +3,7 @@
 import  { useEffect, useState, useRef, createRef } from 'react';
 import axios from 'axios';
 import SuggestedMeetingCalendar from './SuggestedMeetingCalendar';
-
+import { useNavigate } from "react-router-dom";
 // API CALL TO GET SUGGESTED MEETINGS FOR A CALENDAR, return the meetings in a page. 
 
 // TODO: Finalize meetings buttoncontacts page
@@ -28,6 +28,7 @@ function SuggestedMeetings(props) {
     var curr = 0;
     const containerRef = useRef();
     const meetingRef = useRef([]);
+    const navigate = useNavigate();
 
     if (meetingRef.current.length !== 5) {
       meetingRef.current = Array(5).fill().map((_, i) => meetingRef.current[i] || createRef());
@@ -126,9 +127,9 @@ function SuggestedMeetings(props) {
       // wait
       
       // go to meetings page. 
-
+    
       // route to meeting page
-
+      navigate('/meetings');
     }
 
 
