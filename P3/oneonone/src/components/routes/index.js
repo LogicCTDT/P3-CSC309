@@ -4,6 +4,7 @@ import ViewResponded from "../pages/ViewResponded";
 import SuggestedMeetings from "../SuggestedMeetings";
 import Meetings from "../Meetings.js";
 import Contacts from "../contacts.js";
+import FillInCalendar from "../pages/FillInCalendar";
 
 export default function Router (){
     return useRoutes([
@@ -15,8 +16,12 @@ export default function Router (){
                     element: <LandingPage />
                 },
                 {
-                    path: '/register', 
+                    path: '/ViewResponded', 
                     element: <ViewResponded />
+                },
+                {
+                    path: '/FillInCalendar',
+                    element: <FillInCalendar />
                 },
                 {
                     path: '/testPage',
