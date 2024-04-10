@@ -16,6 +16,7 @@ const SuggestedMeetingCalendar = (props) => {
 
 
     require('../App.css');
+    require('./suggestedmeetings.css');
     useEffect(() => {
         setLoading(true);
     const generateCalendar = () => {
@@ -69,10 +70,10 @@ const SuggestedMeetingCalendar = (props) => {
         for(let i = 0; i < displayCalendar.length; i = i + slots){
             let temp = [];
             if (i !== 0) {
-                temp.push(['blank', 0])
+                temp.push(['blank', ''])
             }
             for(let j = 0; j < slots; j++){
-                temp.push([displayCalendar[i+j], 0])
+                temp.push([displayCalendar[i+j], ''])
        
             }
             
@@ -300,7 +301,7 @@ const SuggestedMeetingCalendar = (props) => {
                     <div key={index} className="time-column">
                         <h2>{dateToDay(inner[0][3])}</h2>
                         {inner?.map((time, idx) => (
-                            <div key={idx} className={time[1] !==0 ? time[0] + " clickable": time[0] } onClick={time[1] !== 0 ? () => swapAvailabilities(index, idx) : undefined}> {time[1]}  </div>
+                            <div key={idx} className={time[1] !== '' ? time[0] + " clickable": time[0] } onClick={time[1] !== '' ? () => swapAvailabilities(index, idx) : undefined}> {time[1]}  </div>
                             
                         ))}
                     </div>

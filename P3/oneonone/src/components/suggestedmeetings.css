@@ -46,6 +46,9 @@
     color:black;
 }
 
+.blank {
+    color: black;
+}
 .action-btns {
     display: flex;
     align-items: center;

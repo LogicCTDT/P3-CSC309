@@ -24,7 +24,7 @@ export default function Router (){
                     element: <FillInCalendar />
                 },
                 {
-                    path: '/testPage',
+                    path: '/suggested',
                     element: <SuggestedMeetings />
                 },
                 {
