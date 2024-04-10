@@ -258,3 +258,45 @@ div {
     background-color: var(--tertiary-dark);
     cursor: pointer;
 }
+
+.legend {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 8px 0 -8px 0;
+}
+
+.legend-item-shared {
+    border: none;
+    border-radius: 4px;
+    padding: 2px 6%;
+    background-color: var(--primary);
+    color: var(--white);
+    margin-left: 2%;
+}
+
+.legend-item-taken {
+    border: none;
+    border-radius: 4px;
+    padding: 2px 6%;
+    background-color: var(--primary-light);
+    color: var(--white);
+}
+
+.legend-item-high {
+    border: none;
+    border-radius: 4px;
+    padding: 2px 6%;
+    background-color: var(--accent-red);
+    color: var(--white);
+}
+
+.legend-item-low {
+    border: none;
+    border-radius: 4px;
+    padding: 2px 6%;
+    background-color: var(--tertiary);
+    color: var(--white);
+}
+

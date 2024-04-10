@@ -221,6 +221,9 @@ export default function FillInCalendar(){
         console.log("editCal was updated");
     }, [editCal]);
 
+    // <button onClick={handleSubmit}>go to view responded page</button>         
+
+
     return (
         <div>
             <div className="fill-title-wrapper">
@@ -248,6 +251,12 @@ export default function FillInCalendar(){
             </div> 
             <div className="fill-title-wrapper">
                 <h1 className="updated">Updated Calendar</h1>
+                <div className="legend">
+                    <div className="legend-item-shared">overlap</div>
+                    <div className="legend-item-taken">other user</div>
+                    <div className="legend-item-high">you (high)</div>
+                    <div className="legend-item-low">you (low)</div>
+                </div>
             </div>
             <div className="display-calendar">
                 <div className="time-column">
@@ -265,7 +274,6 @@ export default function FillInCalendar(){
                     </div>
                 ))}
             </div>   
-            <button onClick={handleSubmit}>go to view responded page</button>         
         </div>
     );
 }
