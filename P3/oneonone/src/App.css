@@ -11,21 +11,85 @@
     --tertiary-dark: #68696b;
 }
 
+.wrapper { 
+    display: flex;
+    justify-content: space-between;
+    height: 90vh;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 2%;
+}
+
+.cal-wrapper, .invited-wrapper {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
 .display-calendar {
     display: flex;
     flex-direction: row;
-    border: 1px solid var(--black);
-    margin: 2% 5% ;
-    width: 95vw;
+    margin: 2% 2% ;
+    min-width: 300px;
 }
-.time-column > div.blank {
-    padding: 6px;
+.time-column {
+    width: fit-content;
 }
-.time-column h2 {
+
+.time-column h4 {
     border: 1px solid var(--black);
     margin: 0;
-    padding: 6px;
+    min-width: 90px;
+    width: 10vw;
 }
+
+.show {
+    color: var(--black) !important;
+    min-width: 120px !important;
+}
+
+.time-column h2 {
+    border: 1px solid var(--black);
+    font-size: large;
+    height: 2rem;
+    text-align: center;
+    min-width: 120px;
+}
+
+.blankbutton, .lowbutton, .highbutton {
+    text-align: center;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    padding: 6px;
+    font-size: large;
+    min-width: 90px;
+    height: 100%;
+    width: 100%;
+}
+
+.blankbutton:hover {
+    background-color: var(--tertiary-light);
+    color: var(--tertiary-light);
+    cursor: pointer;
+}
+
+.lowbutton:hover {
+    background-color: var(--tertiary-dark) !important;
+    color: var(--tertiary-dark) !important;
+    cursor: pointer;
+}
+
+.highbutton:hover {
+    background-color: var(--accent-orange) !important;
+    color: var(--accent-orange) !important;
+    cursor: pointer;
+}
+
 
 .time-column > div.blank.clickable {
     cursor: pointer;
@@ -35,28 +99,204 @@
     cursor: pointer;
     background-color: var(--primary-light);
 }
-.blank, .low, .high {
+
+.blank, .low, .high, .other-sep, .shared {
     border: 1px solid var(--black);
+    font-size: large;
+    height: 3rem;
+    text-align: center;
+    min-width: 90px;
 }
 
 div {
     padding: 0px;
 }
-.blank {
+.blank, .blankbutton {
     background-color: var(--white);
-    color: var(--black);
-}
-
-.low {
-    background-color: var(--tertiary);
     color: var(--white);
 }
 
+.lowbutton {
+    background-color: var(--tertiary) !important;
+    color: var(--tertiary);
+}
+
+.highbutton {
+    background-color: var(--accent-red) !important;
+    color: var(--accent-red);
+}
+
 .high {
+    background-color: var(--accent-red) !important;
+    color: var(--white);
+}
+.low {
+    background-color: var(--tertiary) !important;
+    color: var(--white);
+}
+
+.other-sep {
+    background-color: var(--primary-light);
+    color: var(--primary-light);
+}
+
+.shared {
+    background-color: var(--primary);
+    color: var(--primary);
+}
+
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    border: 1px solid var(--black);
+    border-radius: 10px;
+    padding: 0;
+    margin: 10px;
+    min-width: 300px;
+    width: 30vw;
+}
+
+.contact button {
+    min-width: 290px;
+    width: 25vw;
+    background-color: var(--tertiary-dark);
+    color: var(--white);
+    border-radius: 4px;
+    border: none;
+    min-height: 30px;
+    margin: 5px;
+}
+
+.contact button:hover {
+    background-color: var(--tertiary);
+    cursor: pointer;
+}
+
+.invited-wrapper input{
+    border-radius: 4px;
+    min-height: 25px;
+    min-width: 200px;
+}
+
+.add-invited {
+    background-color: var(--primary-light)!important;
+    border: none;
+    border-radius: 4px;
+    min-height: 25px;
+    min-width: 200px;
+    margin: 4px;
+}
+
+.add-invited:hover {
+    cursor: pointer;
+    background-color: var(--tertiary)!important;
+}
+
+.bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gen {
+    min-width: 300px;
+    min-height: 60px;
+    border-radius: 4px;
+    border: none;
+    background-color: var(--primary);
+    color: var(--white);
+    font-size: large;
+}
+
+.gen:hover {
+    background-color: var(--primary-light);
+    cursor: pointer;
+}
+
+.fill-title-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70vw;
+    margin: 0;
+    padding: 0;
+}
+
+.updated {
+    margin: 0;
+}
+
+.high-toggle, .low-toggle {
+    min-width: 250px;
+    width: 30vw;
+    height: 48px;
+    font-size: x-large;
+    border: none;
+    border-radius: 4px;
+    color: var(--white);
+}
+
+.high-toggle {
+    background-color: var(--accent-red);
+}
+
+.low-toggle {
+    background-color: var(--tertiary);
+}
+
+.high-toggle:hover {
+    background-color: var(--accent-orange);
+    cursor: pointer;
+}
+
+.low-toggle:hover {
+    background-color: var(--tertiary-dark);
+    cursor: pointer;
+}
+
+.legend {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 8px 0 -8px 0;
+}
+
+.legend-item-shared {
+    border: none;
+    border-radius: 4px;
+    padding: 2px 6%;
+    background-color: var(--primary);
+    color: var(--white);
+    margin-left: 2%;
+}
+
+.legend-item-taken {
+    border: none;
+    border-radius: 4px;
+    padding: 2px 6%;
+    background-color: var(--primary-light);
+    color: var(--white);
+}
+
+.legend-item-high {
+    border: none;
+    border-radius: 4px;
+    padding: 2px 6%;
     background-color: var(--accent-red);
     color: var(--white);
 }
 
-.displayCalendarCol {
-    border: 1px solid black;
+.legend-item-low {
+    border: none;
+    border-radius: 4px;
+    padding: 2px 6%;
+    background-color: var(--tertiary);
+    color: var(--white);
 }
+

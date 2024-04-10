@@ -6,10 +6,9 @@ import axios from 'axios';
 // need to change to get calendar associated with login user etc.
 
 export default function FillInCalendar(){
-    require("../../App.css");
+    require("../../App.css")
     const navigate = useNavigate();
-    const handleSubmit = () => navigate('/FillInCalendar', { replace: false });
-    // const testSelectProducts = () => navigate('/testPage', { replace: false });
+    const handleSubmit = () => navigate('/ViewResponded', { replace: false });
 
     // holds api availability data
     const [availablilties, setAvailabilities] = useState([]);
@@ -24,14 +23,6 @@ export default function FillInCalendar(){
     const [editCal, setEditCal] = useState([]);
     // preference for selection of slots
     const [editPref, setEditPref] = useState("high");
-    // hold api invited data
-    const [invList, setInvList] = useState([]);
-    // invited data in the form to display
-    const [invDisp, setInvDisp] = useState([]);
-    // user data
-    const [userData, setUserData] = useState([]);
-    // username for input for adding a new invited user
-    const [userToAdd, setUserToAdd] = useState("");
 
     // create calendar arrays from api
     useEffect(() => {
@@ -103,37 +94,12 @@ export default function FillInCalendar(){
         .catch(error => {
         console.log(error);
         });
-    }, []);
+    }, [editPref]);
 
-    // grab all user info from api
-    useEffect(() => {
-        axios.get('http://localhost:8000/api/allUsers/')
-            .then(response => {
-            setUserData(response.data);
-            // console.log(response.data);
-            })
-            .catch(error => {
-            console.log(error);
-            });
-        }, []);
-
-    // grab all invited users to a calendar
-    useEffect(() => {
-        axios.get('http://localhost:8000/api/calendar/1/invited/')
-            .then(response => {
-            setInvList(response.data);
-            })
-            .catch(error => {
-            console.log(error);
-            });
-        }, []);
-
-    // generate the calendar with availabilities, generate invited contacts
+    // generate the calendar with availabilities
     useEffect(() => {
         // update calendar for each availablilty
         if(availablilties.length == 0){return}
-        if(invList.length == 0){return}
-        if(userData.length == 0){return}
         for(let i = 0; i < availablilties.length; i++){
             let start = availablilties[i].start_time;
             let avDate = ""
@@ -161,46 +127,28 @@ export default function FillInCalendar(){
                 user = availablilties[i].user;
             }
 
-            // console.log(displayCalendarSeparated);
-
             if(displayCalendarSeparated.length < 1){return}
             var dispCopy = displayCalendarSeparated;
 
+            if(user != 4){prefClass = "other-sep"}
+
             var id = availablilties[i].id;
 
-            var username = ""
-            // get relevant user info
-            for(let k = 0; k < userData.length; k++){
-                if(userData[k].id == user){
-                    username = userData[k].username;
-                }
+            if(dispCopy[parseInt(dayIndex)][parseInt(timeIndex)][2] != 0 && dispCopy[parseInt(dayIndex)][parseInt(timeIndex)][1] != user){
+                dispCopy[parseInt(dayIndex)][parseInt(timeIndex)] = ["shared", user, id]; 
+            } else{
+                dispCopy[parseInt(dayIndex)][parseInt(timeIndex)] = [prefClass, user, id]; 
             }
-
-            dispCopy[parseInt(dayIndex)][parseInt(timeIndex)] = [prefClass, username, id]; 
-            // console.log(dispCopy);
             setDisplayCalendarSeparated(dispCopy);
+            if(user == 4){
+                dispCopy = editCal;
+                dispCopy[parseInt(dayIndex)][parseInt(timeIndex)] = [prefClass, user, id];
+                setEditCal(dispCopy);
+            }
             console.log("generated availabilities");
         }
-        // generate contacts into a form to display
-        // console.log(invList);
-        var InvDispTemp = [];
-        for(let d = 0; d < invList.length; d++){
-            var invusername = ""
-            var invemail = ""
-            // get relevant user info
-            for(let k = 0; k < userData.length; k++){
-                if(userData[k].id == invList[d].invUser){
-                    invusername = userData[k].username;
-                    invemail = userData[k].email;
-                }
-            }
-            var emailStr = "mailto:" + invemail + "?subject=More%20info...?body=Please%20follow%20up%20on%20this%20meeting%20http://localhost:3000/FillInCalendar%0D%0A%20%0D%0A";
-            // fourth col is email for their username
-            InvDispTemp.push([invusername, invList[d].id, invList[d].answered, emailStr]);
-        }
-        setInvDisp(InvDispTemp);
     //};
-    }, [availablilties, displayCalendarSeparated, startDateGlobal, startTimeGlobal, invList, userData]);
+    }, [availablilties, displayCalendarSeparated, startDateGlobal, startTimeGlobal]);
 
     const dateToDay = (date) => {
         let i = date;
@@ -214,6 +162,53 @@ export default function FillInCalendar(){
         else {console.log("error in dateToDay")}
     }
 
+    const handleButton = (index, idx) => {
+        // console.log(index);
+        // console.log(idx);
+        let temp = editCal;
+        var id = temp[index][idx][2];
+        if(temp[index][idx][0] == "blank"){
+            temp[index][idx] = [editPref, 4, id];
+
+            // configure current date and time from array placement
+            var date = parseInt(startDateGlobal.substring(9, 10));
+            var currDate = date + index;
+            var currTime = startTimeGlobal + idx;
+            currDate = currDate.toString();
+            if(currDate.length == 1){currDate = "0" + currDate}
+            var endTime = currTime + 1
+            currTime = currTime.toString();
+            endTime = endTime.toString();
+            if(currTime.length == 1){currTime = "0" + currTime}
+            if(endTime.length == 1){endTime = "0" +  endTime}
+            var startString = startDateGlobal.substring(0, 8) + currDate + "T" + currTime + ":00:00Z";
+            var endString = startDateGlobal.substring(0, 8) + currDate + "T" + endTime + ":00:00Z";
+            var pref = false;
+            if(editPref == "high"){pref = true;}
+
+            axios({
+                // add availability to api
+                method: 'post',
+                url: 'http://localhost:8000/api/1/availabilitypost/',
+                data: {
+                    "start_time": startString,
+                    "end_time": endString,
+                    "preference": pref
+                }                
+            });
+        } else {
+            // delete availability from api. need to reload to see changes
+            temp[index][idx] = ["blank", 0, 0];
+
+            axios({
+                method: 'delete',
+                url: 'http://localhost:8000/api/availability/' + id +"/",
+                data: {}                
+            });
+        }
+        setEditCal(temp);
+    }
+
     const handlePref = () => {
         if(editPref == "high"){
             setEditPref("low")
@@ -222,89 +217,63 @@ export default function FillInCalendar(){
         }
     }
 
-    const handleAddInvited = () => {
-        
-        console.log("user to add:");
-        console.log(userToAdd);
+    useEffect(() => {
+        console.log("editCal was updated");
+    }, [editCal]);
 
-        // get user id for that username
-        var un = ""
-        for(let k = 0; k < userData.length; k++){
-            if(userData[k].username == userToAdd){
-                un = userData[k].id;
-            }
-        }
-
-        if(un == ""){setUserToAdd("user does not exist")} else {
-        console.log("user id found");
-        console.log(un);
-
-        axios({
-            method: 'post',
-            url: 'http://localhost:8000/api/' + un + '/invitedpost/1/',
-            data: {
-                "answered": "false"
-            }                
-        });
-
-
-        setUserToAdd("");}
-    }
-
-    const handleDeleteContact = (contactID) => {
-        axios({
-            method: 'delete',
-            url: 'http://localhost:8000/api/invited/' + contactID +"/",
-            data: {}                
-        });
-    }
-
-    // update button if needed <button onClick={handlePref}>update</button>
-    // nav button <button  onClick={handleSubmit}>go to fill in calendar page</button> 
+    // <button onClick={handleSubmit}>go to view responded page</button>         
 
 
     return (
         <div>
-            <div className="wrapper">
-                <div className="cal-wrapper">
-                    <h1>Current Responses</h1>
-                    <div className="display-calendar">
-                        <div className="time-column">
-                            <h4 className="show">Time</h4>
-                            {timeSlots?.map((item2, idx2) => (
-                                <div key={idx2} className="blank show">{item2[0]}</div>
-                            ))}
-                        </div>
-                        {displayCalendarSeparated?.map((inner2, index2) => (
-                            <div key={index2} className="time-column">
-                                <h4>{dateToDay(index2)}</h4>
-                                {inner2.map((time2, idx2) => (
-                                    <div key={idx2} className={time2[0]}>{time2[1]}</div>
-                                ))}
+            <div className="fill-title-wrapper">
+                <h1>Temp Calendar</h1>
+                <h3>choose preference type</h3>
+                <button className={editPref == "high" ? "high-toggle" : "low-toggle"} onClick={handlePref}>{editPref}</button>
+            </div>
+            <div className="display-calendar">
+                <div className="time-column">
+                    <h4>Time</h4>
+                    {timeSlots?.map((item, idx) => (
+                        <div key={idx} className="blank show">{item[0]}</div>
+                    ))}
+                </div>
+                {editCal?.map((inner, index) => (
+                    <div key={index} className="time-column">
+                        <h4>{dateToDay(index)}</h4>
+                        {inner.map((time, idx) => (
+                            <div key={idx} className={time[0]} onClick={() => handleButton(index, idx)}>
+                                <button className={time[0]+"button"} >.</button>
                             </div>
                         ))}
                     </div>
-                </div>  
-                <div className="invited-wrapper">
-                    <div className="invited-contacts">
-                        {invDisp?.map((item2, idx2) => (
-                                <div key={idx2} className="contact">
-                                    <h3>{item2[0]}</h3>
-                                    {item2[2]
-                                        ? <p>user has already responded</p>
-                                        : <a href={item2[3]}>send reminder</a>
-                                    }
-                                    <button onClick={() => handleDeleteContact(item2[1])}>remove from invited</button>
-                                </div>
-                        ))}
-                    </div>
-                    <input type="text" placeholder="Enter username" value={userToAdd} onChange={(e) => setUserToAdd(e.target.value)} />
-                    <button className="add-invited" onClick={handleAddInvited}>add contact</button>
+                ))}
+            </div> 
+            <div className="fill-title-wrapper">
+                <h1 className="updated">Updated Calendar</h1>
+                <div className="legend">
+                    <div className="legend-item-shared">overlap</div>
+                    <div className="legend-item-taken">other user</div>
+                    <div className="legend-item-high">you (high)</div>
+                    <div className="legend-item-low">you (low)</div>
                 </div>
             </div>
-            <div className="bottom">
-                <button className="gen">generate possible schedules</button>
-            </div> 
+            <div className="display-calendar">
+                <div className="time-column">
+                    <h4>Time</h4>
+                    {timeSlots?.map((item2, idx2) => (
+                        <div key={idx2} className="blank show">{item2[0]}</div>
+                    ))}
+                </div>
+                {displayCalendarSeparated?.map((inner2, index2) => (
+                    <div key={index2} className="time-column">
+                        <h4>{dateToDay(index2)}</h4>
+                        {inner2.map((time2, idx2) => (
+                            <div key={idx2} className={time2[0]}>.</div>
+                        ))}
+                    </div>
+                ))}
+            </div>   
         </div>
     );
 }
