@@ -2,7 +2,7 @@
  
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../App.css';
+
 const SuggestedMeetingCalendar = (props) => {
     // const handleSubmit = () => navigate('/register', { replace: false });
     // const testSelectProducts = () => navigate('/testPage', { replace: false });
@@ -15,7 +15,7 @@ const SuggestedMeetingCalendar = (props) => {
 
 
 
-    
+    require('../App.css');
     useEffect(() => {
         setLoading(true);
     const generateCalendar = () => {
@@ -148,7 +148,7 @@ const SuggestedMeetingCalendar = (props) => {
         let user = displayCalendarSeparated[indexOne][indexTwo][1];
         let curr = displayCalendarSeparated[indexOne][indexTwo];
         console.log(displayCalendarSeparated)
-        // TODO: API CALL: change username
+
         axios.post("http://127.0.0.1:8000/api/tempavailbitiesbyname/", {
             "username": user,
             "calendar": 5
@@ -223,7 +223,9 @@ const SuggestedMeetingCalendar = (props) => {
                 }
                 else{
                     // there is something here, check if the users can swap
+                    ///////////////////////////////////////
                     // TODO: Change 5 to calendarid
+                    ///////////////////////////////////////
                     axios.post("http://127.0.0.1:8000/api/5/movingsuggested/", 
                     {
                             "first": {
@@ -244,7 +246,9 @@ const SuggestedMeetingCalendar = (props) => {
                     }).then(response => {
                         if (response.data === "Valid Swap") {
                             // add to responseArr
-                            var date = avDate.getDay();
+
+                            let date = avDate.getDay();
+
                             responseArr.push("Day: " + dateToDay(date) + ". From: " + start + " to " + (start+1) +".");
                             indexArr.push([dayIndex, timeIndex])
                         }
