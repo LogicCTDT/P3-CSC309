@@ -244,7 +244,7 @@ const SuggestedMeetingCalendar = (props) => {
                     }).then(response => {
                         if (response.data === "Valid Swap") {
                             // add to responseArr
-                            date = avDate.getDay();
+                            var date = avDate.getDay();
                             responseArr.push("Day: " + dateToDay(date) + ". From: " + start + " to " + (start+1) +".");
                             indexArr.push([dayIndex, timeIndex])
                         }

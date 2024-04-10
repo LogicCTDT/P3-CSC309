@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../../App.css';
 
 // currently the calendar is hard coded at 3 and the editing user is user 4
 // need to change to get calendar associated with login user etc.
 
 export default function FillInCalendar(){
+    require("../../App.css")
     const navigate = useNavigate();
     const handleSubmit = () => navigate('/ViewResponded', { replace: false });
 
@@ -26,7 +26,7 @@ export default function FillInCalendar(){
 
     // create calendar arrays from api
     useEffect(() => {
-        axios.get('http://localhost:8000/api/calendar/3/')
+        axios.get('http://localhost:8000/api/calendar/1/')
             .then(response => {
                 var tempArr = []
                 var start_time = response.data.start_time;
@@ -87,7 +87,7 @@ export default function FillInCalendar(){
 
     // grab availabilities from api
     useEffect(() => {
-    axios.get('http://localhost:8000/api/calendar/3/availabilities/')
+    axios.get('http://localhost:8000/api/calendar/1/availabilities/')
         .then(response => {
         setAvailabilities(response.data);
         })
@@ -97,7 +97,6 @@ export default function FillInCalendar(){
     }, [editPref]);
 
     // generate the calendar with availabilities
-    //const generateCalendar = () => {
     useEffect(() => {
         // update calendar for each availablilty
         if(availablilties.length == 0){return}
@@ -127,8 +126,6 @@ export default function FillInCalendar(){
                 if(pref) {prefClass = "high"} else {prefClass = "low"}
                 user = availablilties[i].user;
             }
-
-            // console.log(displayCalendarSeparated);
 
             if(displayCalendarSeparated.length < 1){return}
             var dispCopy = displayCalendarSeparated;
@@ -173,10 +170,6 @@ export default function FillInCalendar(){
         if(temp[index][idx][0] == "blank"){
             temp[index][idx] = [editPref, 4, id];
 
-            // test correct slots are chosen
-            // console.log(startDateGlobal);
-            // console.log(startTimeGlobal);
-
             // configure current date and time from array placement
             var date = parseInt(startDateGlobal.substring(9, 10));
             var currDate = date + index;
@@ -190,14 +183,13 @@ export default function FillInCalendar(){
             if(endTime.length == 1){endTime = "0" +  endTime}
             var startString = startDateGlobal.substring(0, 8) + currDate + "T" + currTime + ":00:00Z";
             var endString = startDateGlobal.substring(0, 8) + currDate + "T" + endTime + ":00:00Z";
-            //console.log(startString);
             var pref = false;
             if(editPref == "high"){pref = true;}
 
             axios({
                 // add availability to api
                 method: 'post',
-                url: 'http://localhost:8000/api/3/availabilitypost/',
+                url: 'http://localhost:8000/api/1/availabilitypost/',
                 data: {
                     "start_time": startString,
                     "end_time": endString,
@@ -206,7 +198,6 @@ export default function FillInCalendar(){
             });
         } else {
             // delete availability from api. need to reload to see changes
-            // console.log(temp[index][idx][2])
             temp[index][idx] = ["blank", 0, 0];
 
             axios({
@@ -232,14 +223,16 @@ export default function FillInCalendar(){
 
     return (
         <div>
-            <h1>Temp Calendar</h1>
-            <h3>choose preference type</h3>
-            <button onClick={handlePref}>{editPref}</button>
+            <div className="fill-title-wrapper">
+                <h1>Temp Calendar</h1>
+                <h3>choose preference type</h3>
+                <button className={editPref == "high" ? "high-toggle" : "low-toggle"} onClick={handlePref}>{editPref}</button>
+            </div>
             <div className="display-calendar">
                 <div className="time-column">
                     <h4>Time</h4>
                     {timeSlots?.map((item, idx) => (
-                        <div key={idx} className="blank">{item[0]}</div>
+                        <div key={idx} className="blank show">{item[0]}</div>
                     ))}
                 </div>
                 {editCal?.map((inner, index) => (
@@ -247,18 +240,20 @@ export default function FillInCalendar(){
                         <h4>{dateToDay(index)}</h4>
                         {inner.map((time, idx) => (
                             <div key={idx} className={time[0]} onClick={() => handleButton(index, idx)}>
-                                <button className={time[0]+"button"} >{time[1]}</button>
+                                <button className={time[0]+"button"} >.</button>
                             </div>
                         ))}
                     </div>
                 ))}
             </div> 
-            <h1>Updated Calendar</h1>
+            <div className="fill-title-wrapper">
+                <h1 className="updated">Updated Calendar</h1>
+            </div>
             <div className="display-calendar">
                 <div className="time-column">
                     <h4>Time</h4>
                     {timeSlots?.map((item2, idx2) => (
-                        <div key={idx2} className="blank">{item2[0]}</div>
+                        <div key={idx2} className="blank show">{item2[0]}</div>
                     ))}
                 </div>
                 {displayCalendarSeparated?.map((inner2, index2) => (
