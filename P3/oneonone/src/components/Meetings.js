@@ -12,7 +12,7 @@ const Meetings = () => {
     /////////////////////////////////////////////////////
     useEffect(() => {
         setLoading(true);
-        axios.get("http://127.0.0.1:8000/api/11/meetings/").then(response => {
+        axios.get("http://127.0.0.1:8000/api/2/meetings/").then(response => {
 
             if (meetings.length == 0) {
             meetings.push(response.data);

@@ -149,10 +149,10 @@ const SuggestedMeetingCalendar = (props) => {
         let user = displayCalendarSeparated[indexOne][indexTwo][1];
         let curr = displayCalendarSeparated[indexOne][indexTwo];
         console.log(displayCalendarSeparated)
-
+        
         axios.post("http://127.0.0.1:8000/api/tempavailbitiesbyname/", {
             "username": user,
-            "calendar": 5
+            "calendar": 1
         
         }).then(response => {
             // response
@@ -227,7 +227,7 @@ const SuggestedMeetingCalendar = (props) => {
                     ///////////////////////////////////////
                     // TODO: Change 5 to calendarid
                     ///////////////////////////////////////
-                    axios.post("http://127.0.0.1:8000/api/5/movingsuggested/", 
+                    axios.post("http://127.0.0.1:8000/api/1/movingsuggested/", 
                     {
                             "first": {
                                 "start_time": availabilities[i][0].toISOString(),

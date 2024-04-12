@@ -11,7 +11,7 @@ const Contacts = () => {
     /////////////////////////////////////////////////////
     useEffect(() => {
         setLoading(true);
-        axios.get("http://127.0.0.1:8000/api/10/contacts/").then(response => {
+        axios.get("http://127.0.0.1:8000/api/2/contacts/").then(response => {
 
             if (contacts.length == 0) {
                 contacts.push(response.data);
@@ -47,7 +47,7 @@ const Contacts = () => {
                         <a href="/meetings" class="hover:opacity-80">Meetings</a>
                         <a href="create-meeting.html" class="hover:opacity-80">Schedule Meetings</a>
                         <a href="/contacts" class="hover:opacity-80">Contacts</a>
-                        <a href="profile.html" class="hover:opacity-80">Profile</a>
+                        <a href="/profile" class="hover:opacity-80">Profile</a>
                     </nav>
                 </div>
             </section>
@@ -70,10 +70,10 @@ const Contacts = () => {
                 // CHANGE HIDDEN VALUE FROM 10 TO USER ID
                 ////////////////////////////////////////////////////////////////////////////////////////////////}
                 }
-                <form action="http://127.0.0.1:8000/api/10/contacts/" method="post"> 
+                <form action="http://127.0.0.1:8000/api/2/contacts/" method="post"> 
                     <label for="email" > Email: </label>
                     <input type="email" name="email"/>
-                    <input type="hidden" value="10" name="user"/>
+                    <input type="hidden" value="2" name="user"/>
                     <input type="submit" value="Submit" class="submit"/>
                 </form>
             </div>

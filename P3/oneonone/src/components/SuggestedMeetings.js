@@ -137,9 +137,9 @@ function SuggestedMeetings(props) {
     setLoading(true);
     setLoadingA(true);
     ///////////////////////////////////////////////////
-    // TODO: api call, change 5 to calendar number
+    // TODO: api call, change 1 to calendar number
     ///////////////////////////////////////////////////
-    axios.get('http://127.0.0.1:8000/api/5/suggestedmeetings/', {
+    axios.get('http://127.0.0.1:8000/api/1/suggestedmeetings/', {
       //'http://127.0.0.1:8000/api/' + props.calendarID + '/suggestedmeetings/'
         headers: {
             'Content-Type': 'application/json',
@@ -176,7 +176,7 @@ function SuggestedMeetings(props) {
         ///////////////////////////////////////////////////
         //////////////// CHANGE API NUMBER
         ///////////////////////////////////////////////////
-        axios.get('http://localhost:8000/api/calendar/5/')
+        axios.get('http://localhost:8000/api/calendar/1/')
             .then(response => {
               console.log(response.data);
             setCalendar(response.data);
